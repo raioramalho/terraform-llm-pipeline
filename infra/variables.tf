@@ -1,18 +1,18 @@
-variable "cloudflare_api_token" {
-  type        = string
-  description = "Cloudflare API Token com permissão de Zone e Tunnel"
-}
+# variable "cloudflare_api_token" {
+#   type        = string
+#   description = "Cloudflare API Token com permissão de Zone e Tunnel"
+# }
 
-variable "cloudflare_account_id" {
-  type        = string
-  description = "Cloudflare Account ID"
-}
+# variable "cloudflare_account_id" {
+#   type        = string
+#   description = "Cloudflare Account ID"
+# }
 
-variable "cloudflare_zone" {
-  type        = string
-  description = "Domain managed in Cloudflare"
-  default     = "raiosystems.tech"
-}
+# variable "cloudflare_zone" {
+#   type        = string
+#   description = "Domain managed in Cloudflare"
+#   default     = "raiosystems.tech"
+# }
 
 variable "kubernetes_config_path" {
   type        = string
