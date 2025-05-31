@@ -43,11 +43,11 @@ jobs:
         working-directory: infra
 
       # Descomente para aplicar na main
-      - name: Terraform Apply      
-        run: terraform apply -auto-approve -var-file=terraform.tfvars
-        working-directory: infra
+      # - name: Terraform Apply      
+      #   run: terraform apply -auto-approve -var-file=terraform.tfvars
+      #   working-directory: infra
 
       # Terraform Destroy
-      # - name: Terraform Destroy
-      #   run: terraform destroy -auto-approve -var-file=terraform.tfvars
-      #   working-directory: infra
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve -var-file=terraform.tfvars
+        working-directory: infra
