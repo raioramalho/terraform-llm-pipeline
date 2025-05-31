@@ -12,42 +12,32 @@ jobs:
     environment: raiosystems
 
     steps:
-      
       - name: Checkout code
         uses: actions/checkout@v4
-          
+
       - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v3        
-  
+        uses: hashicorp/setup-terraform@v3
 
       - name: Configure kubeconfig
         run: |
           mkdir -p ~/.kube
-          echo "${{ secrets.KUBECONFIG }}" | base64 -d > ~/.kube/local
-          chmod 600 ~/.kube/local
+          echo "${{ secrets.KUBECONFIG }}" | base64 -d > ~/.kube/config
+          chmod 600 ~/.kube/config
 
       - name: Generate terraform.tfvars
         run: |
-          echo "${{ secrets.TERRAFORMVARS }}" | base64 -d > terraform.tfvars
-          chmod 600 terraform.tfvars
+          echo "${{ secrets.TERRAFORMVARS }}" | base64 -d > infra/terraform.tfvars
+          chmod 600 infra/terraform.tfvars
 
       - name: Terraform Init
-        run: terraform init
         working-directory: infra
-
-      # - name: Terraform Validate
-      #   run: terraform validate
+        run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan 
         working-directory: infra
+        run: terraform plan -var-file=terraform.tfvars
 
       # Descomente para aplicar na main
-      # - name: Terraform Apply      
-      #   run: terraform apply -auto-approve -var-file=terraform.tfvars
-      #   working-directory: infra
-
-      # Terraform Destroy
-      - name: Terraform Destroy
-        run: terraform destroy -auto-approve -var-file=terraform.tfvars
+      - name: Terraform Apply
         working-directory: infra
+        run: terraform apply -auto-approve -var-file=terraform.tfvars
