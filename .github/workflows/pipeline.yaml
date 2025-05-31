@@ -12,8 +12,8 @@ jobs:
     environment: raiosystems
 
     steps:
-      - name: To infra folder
-        run: cd infra/
+      # - name: To infra folder
+      #   run: cd infra/
         
       - name: Checkout code
         uses: actions/checkout@v4
