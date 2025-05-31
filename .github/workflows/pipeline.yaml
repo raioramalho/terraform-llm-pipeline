@@ -15,14 +15,10 @@ jobs:
       
       - name: Checkout code
         uses: actions/checkout@v4
-        
-      - name: To infra folder
-        run: cd infra/
-        
-
+          
       - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v3
-      
+        uses: hashicorp/setup-terraform@v3        
+  
 
       - name: Configure kubeconfig
         run: |
@@ -37,6 +33,7 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
+        working-directory: infra
 
       # - name: Terraform Validate
       #   run: terraform validate
