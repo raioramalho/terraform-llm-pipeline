@@ -12,15 +12,15 @@ jobs:
     environment: raiosystems
 
     steps:
-      # - name: To infra folder
-      #   run: cd infra/
-        
+      
       - name: Checkout code
         uses: actions/checkout@v4
-
+      
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
-
+      
+      - name: To infra folder
+        run: cd infra/
 
       - name: Configure kubeconfig
         run: |
